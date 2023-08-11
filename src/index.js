@@ -39,6 +39,7 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     
+    
     const lengthLetter = 10;
 
     let res = [];
@@ -51,22 +52,22 @@ function decode(expr) {
     for(let index in res){
 
         res[index] = res[index].slice(res[index].indexOf('1'))
-        				       .replaceAll('10',".")
-       					       .replaceAll('11',"-")
-        				       .replaceAll('*'," ")
-
-        let inx = 0;
-
-        for(let elem of Object.keys(MORSE_TABLE)){
-
-            inx = inx + 1;
-            if(elem === res[index]){
-                 res[index] = res[index].replace(res[index], Object.values(MORSE_TABLE)[inx-1]);
-            }
-            
-        }                     
+        				   .replaceAll('10',".")
+       					   .replaceAll('11',"-")
+        				   .replaceAll('*'," ")
     }
 
+	
+
+    for(let index in res){
+    	if(res[index] === " ") {
+            res[index] = res[index] 
+    			
+    	} else {
+            res[index] = res[index].replace(res[index], MORSE_TABLE[res[index]])
+        }
+    	
+    }
     
 
     let result = res.join('');
