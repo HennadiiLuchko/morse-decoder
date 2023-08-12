@@ -54,21 +54,15 @@ function decode(expr) {
         res[index] = res[index].slice(res[index].indexOf('1'))
         				   .replaceAll('10',".")
        					   .replaceAll('11',"-")
-        				   .replaceAll('*'," ")
-    }
+        				   .replaceAll('*'," ");
 
-	
-
-    for(let index in res){
-    	if(res[index] === " ") {
+	if(res[index] === " ") {
             res[index] = res[index] 
     			
     	} else {
             res[index] = res[index].replace(res[index], MORSE_TABLE[res[index]])
         }
-    	
     }
-    
 
     let result = res.join('');
     return result;
